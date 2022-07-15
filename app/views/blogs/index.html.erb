@@ -11,6 +11,9 @@
       <div class="showcard">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
+            <% if b.photo.attached? %>
+              <%= image_tag b.photo.variant(resize_to_fit: [300, 200]), alt: "Image not loaded"  %>
+            <% end %>
             <h5 class="card-title"><%= link_to b.title, blog_path(b) %></h5>
             <p class="card-text"><%= b.subtitle %></p>
             <div class="card_btn">
