@@ -1,5 +1,5 @@
 <!-- Blog Details Showing -->
-<div class="center flex-column" id="vantajs" >
+<div class="center flex-column showpage" id="vantajs" >
   <!--Error Message-->
   <% if flash[:errors] %>
     <% flash.each do |name,message| %>
@@ -10,10 +10,10 @@
     <div class="card" style="width: 60rem;">
       <div class="row no-gutters">
         <div class="col">
-          <div class="card-body">
+          <div class="card-body ">
             <h5 class="card-title">Title :  <%= @blog.title %></h5>
             <p class="card-text">Subtitle : <%= @blog.subtitle %></p>
-            <p class="card-text">Image : <%= image_tag @blog.photo.variant(resize_to_fit: [300, 200]) %></p>
+            <p class="card-text">Image : <%= image_tag @blog.photo %></p>
             <div class="card_btn mt-5">
               <%= button_to "Edit" , edit_blog_path, method: :get ,class:"btn btn-outline-success shadow px-5 py-2 m-2" %>
               <%= button_to "Delete", blog_path(@blog), method: :delete ,class:"btn btn-outline-danger shadow px-5 py-2 m-2" %>
