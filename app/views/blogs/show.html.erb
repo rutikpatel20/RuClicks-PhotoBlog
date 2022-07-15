@@ -7,7 +7,9 @@
           <div class="card-body ">
             <h5 class="card-title">Title :  <%= @blog.title %></h5>
             <p class="card-text">Subtitle : <%= @blog.subtitle %></p>
-            <p class="card-text">Image : <%= image_tag @blog.photo %></p>
+            <% if @blog.photo.attached? %>
+              <p class="card-text">Image : <%= image_tag @blog.photo %> </p>
+            <% end %>
             <div class="card_btn mt-5">
               <%= button_to "Edit" , edit_blog_path, method: :get ,class:"btn btn-outline-success shadow px-5 py-2 m-2" %>
               <%= button_to "Delete", blog_path(@blog), method: :delete ,class:"btn btn-outline-danger shadow px-5 py-2 m-2" %>
