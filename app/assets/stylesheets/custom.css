@@ -2,6 +2,13 @@ body {
   background-color: mintcream;
 }
 
+.navbar .container-fluid .logo {
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-size: 26px;
+}
+
 .center {
   height: 100vh;
   width: 100vw;
