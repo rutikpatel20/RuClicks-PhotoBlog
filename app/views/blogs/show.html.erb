@@ -1,0 +1,27 @@
+<!-- Blog Details Showing -->
+<div class="center flex-column" id="vantajs" >
+  <!--Error Message-->
+  <% if flash[:errors] %>
+    <% flash.each do |name,message| %>
+      <p class="text-danger"><%= message%></p>
+    <% end %>
+  <% end %>
+  <div class="showcard">
+    <div class="card" style="width: 60rem;">
+      <div class="row no-gutters">
+        <div class="col">
+          <div class="card-body">
+            <h5 class="card-title">Title :  <%= @blog.title %></h5>
+            <p class="card-text">Subtitle : <%= @blog.subtitle %></p>
+            <p class="card-text">Image : <%= @blog.photo %></p>
+            <div class="card_btn mt-5">
+              <%= button_to "Edit" , edit_blog_path, method: :get ,class:"btn btn-outline-success shadow px-5 py-2 m-2" %>
+              <%= button_to "Delete", blog_path(@blog), method: :delete ,class:"btn btn-outline-danger shadow px-5 py-2 m-2" %>
+              <%= button_to "View All Blogs", blogs_path, method: :get ,class:"btn btn-outline-primary shadow p-2 m-2" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

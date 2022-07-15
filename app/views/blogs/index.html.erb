@@ -1,0 +1,25 @@
+<div class="center flex-column" style= "height: auto;">
+  <!--Error Message-->
+  <% if flash[:errors] %>
+    <% flash.each do |name,message| %>
+      <p class="text-success"><%= message%></p>
+    <% end %>
+  <% end %>
+  <!-- Blog Table -->
+  <div class="grid-container">
+    <% @blogs.each do |b| %>
+      <div class="showcard">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to b.title, blog_path(b) %></h5>
+            <p class="card-text"><%= b.subtitle %></p>
+            <div class="card_btn">
+              <%= button_to "Edit" , edit_blog_path(b), method: :get ,class:"btn btn-outline-success shadow px-3 py-2 b-2" %>
+              <%= button_to "Delete", blog_path(b), method: :delete ,class:"btn btn-outline-danger shadow px-3 py-2 b-2" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
