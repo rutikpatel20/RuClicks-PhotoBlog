@@ -12,7 +12,7 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.create(blog_params)
     if @blog.valid?
-      flash[:errors] = "Blog Created Succesfully"
+      flash[:notice] = "Blog Created Succesfully"
       redirect_to blogs_path
     else
       flash[:errors] = @blog.errors.full_messages
@@ -28,7 +28,7 @@ class BlogsController < ApplicationController
 
   def update
     if @blog.update(blog_params)
-      flash[:errors] = "Blog Updated Successfully"
+      flash[:notice] = "Blog Updated Successfully"
       redirect_to blog_path(@blog)
     else
       flash[:errors] = @blog.errors.full_messages
