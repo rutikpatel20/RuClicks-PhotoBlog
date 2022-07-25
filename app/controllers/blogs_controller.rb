@@ -21,6 +21,8 @@ class BlogsController < ApplicationController
   end
 
   def show
+    views = @blog.views + 1
+    @blog.update(views: views)
   end
 
   def edit
