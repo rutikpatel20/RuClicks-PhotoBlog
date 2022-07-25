@@ -75,4 +75,23 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.active_storage.variant_processor = :mini_magick
+
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+
+  # Letter Opener Setup
+  # config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.perform_deliveries = true
+
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    #for google gmail sending
+    :address => "smtp.gmail.com",
+    #for microsoft outlook sending
+    # :address => "smtp.office365.com.",
+    :port => 587,
+    :user_name => "rutik.patel7049@gmail.com",
+    :password => Rails.application.credentials.dig(:email, :mail_sending),
+    :authentication => "plain",
+    :enable_starttls_auto => true,
+  }
 end
