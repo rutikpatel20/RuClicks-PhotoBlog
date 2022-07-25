@@ -1,4 +1,4 @@
 class StaticPagesController < ApplicationController
-  def index
+  def after_registration_path
   end
 end
