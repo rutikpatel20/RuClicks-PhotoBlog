@@ -20,7 +20,7 @@
               <p class="card-text">
                 <small class="text-muted">
                   <%= b.updated_at.strftime("%A, %B %e, %Y") %> by 
-                  <%= b.user_id %> <br>
+                  <%= b.user.username %> <br>
                   <%= pluralize(b.views, "View") %>
                 </small>
               </p>
