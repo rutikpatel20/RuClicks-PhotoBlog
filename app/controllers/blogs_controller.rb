@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @blogs = Blog.all
@@ -11,7 +12,8 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.create(blog_params)
-    if @blog.valid?
+    @blog.user = current_user
+    if @blog.save
       flash[:notice] = "Blog Created Succesfully"
       redirect_to blogs_path
     else
@@ -50,6 +52,6 @@ class BlogsController < ApplicationController
   end
 
   def blog_params
-    params.require(:blog).permit(:title, :subtitle, :photo, :user_id)
+    params.require(:blog).permit(:title, :subtitle, :photo)
   end
 end

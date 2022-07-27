@@ -12,12 +12,12 @@
       <% end %>
       <!-- Form Started Here -->
       <%= form_with model: @blog do |f| %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%#= f.hidden_field :user_id, :value => current_user.id %>
         <br>
         <%= f.label :title, "Blog Title :", class:"mt-3" %>
         <%= f.text_field :title, placeholder: "Enter Title Here", class:"mb-2 form-control" %>
         <br>
-        <%= f.label :subtitle, "Release Date :" %>
+        <%= f.label :subtitle, "Enter Subtitle Here :" %>
         <%= f.text_field :subtitle, placeholder: "Enter Subtitle Here", class:"mb-2 form-control" %>
         <br>
         <%= f.label :photo, "Photo :" %>
