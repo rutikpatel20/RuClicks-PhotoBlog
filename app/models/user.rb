@@ -4,12 +4,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, authentication_keys: [:login]
 
+  has_many :comments, dependent: :destroy
+
   validates :username, presence: true, uniqueness: true
 
   attr_accessor :login
 
   def login
     @login || self.username || self.email
+  end
+
+  def comment_created
+    # Same as number_of_comments +=1
+    self.number_of_comments = number_of_comments + 1
+    save
+    return number_of_comments
   end
 
   private
