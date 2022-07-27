@@ -24,7 +24,18 @@
       </ul>
       <div class="d-flex">
         <% if signed_in? %>
-          <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: "false" }, class:"btn btn-warning border-0 rounded-pill shadow px-3 py-2" %>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown ">
+              <a class="btn dropdown-toggle active btn-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= current_user.username %>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><%= link_to "New Blog", new_blog_path, class:"dropdown-item" %></li>
+                <li><hr class="dropdown-divider"></li>
+                <li> <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: "false" }, class:"dropdown-item" %> </li>
+              </ul>
+            </li>
+          </ul>
         <% else %>
           <%= link_to "Log in", new_user_session_path, class:"btn btn-success border-0 rounded-pill shadow px-3 py-2 text-decoration-none" %>
           <%= link_to "Register", new_user_registration_path, class:"btn btn-primary border-0 rounded-pill shadow px-3 py-2 ms-2 text-decoration-none" %>
