@@ -25,6 +25,7 @@ class BlogsController < ApplicationController
   def show
     views = @blog.views + 1
     @blog.update(views: views)
+    @comments = @blog.comments.order("created_at DESC")
   end
 
   def edit
@@ -43,6 +44,9 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     redirect_to blogs_path, notice: "Blog was successfully destroyed."
+  end
+
+  def history
   end
 
   private
