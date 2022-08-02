@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-3">
     <div class="row">
-      <%= image_tag("profile-pic.png", class:"comment-avatar") %>
+      <%= image_tag("profile-pic.png", class:"comment-avatar mt-2") %>
     </div>
     <div class="row">
       <div class="comment-timestamp" id="edit-history-text-<%= comment.id%>">
@@ -10,17 +10,17 @@
     </div>
   </div>
   <div class="col-9">
-    <div class="row">
+    <div class="row mt-2">
       <div class="col-8">
-        <div class="comment-username">
+        <div class="comment-username mt-2 fw-bold">
           <%= comment.user.username%>
         </div>
-        <div class="comment-number">
-          #<%= comment.comment_number%>
+        <div class="comment-number fw-light">
+          Comment #<%= comment.comment_number%>
         </div>
       </div>
       <% if current_user && (current_user == comment.user)%>
-        <div class="col-4 text-right" style="padding-right: 0;">
+        <div class="col-4 mt-2 text-center">
           <div class="button-group" role="group" aria-label="Edit and Delete Button Group">
             <%= link_to "Edit", edit_comment_path(comment), class: 'btn btn-warning', remote: true %>
             <%= link_to "Delete", comment, class:'btn btn-danger', method: :delete, remote: true %>
@@ -28,7 +28,7 @@
         </div>
       <% end %>
     </div>
-    <hr class="md-4">
+    <hr>
     <div class="comment-body" id="comment-body-<%= comment.id %>">
       <%= comment.comment_body %>
     </div>

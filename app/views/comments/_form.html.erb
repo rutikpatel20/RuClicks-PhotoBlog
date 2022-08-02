@@ -2,7 +2,7 @@
   <div class="comment-form">
     <%= form_with model: [commentable, local] do |f| %>
       <div class="form-group d-flex align-items-center">
-        <%= f.text_area :comment_body, placeholder:"Add Your Comments...", class:"reply-form-#{commentable.id}", id: f.object.object_id, method: :patch %>
+        <%= f.text_area :comment_body, placeholder:"Add Your Comments...", class:"reply-form-#{commentable.id} form-control", id: f.object.object_id, method: :patch %>
         <%= f.submit "Add", class:"btn btn-secondary ms-2 px-3 py-2" %>
       <% end %>
     </div>

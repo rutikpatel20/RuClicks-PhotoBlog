@@ -3,20 +3,29 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .comment-container{
-  box-shadow: 2px 2px 2px 2px black;
+  box-shadow: 1px 1px 7px 1px black;
   margin: 1em;
   padding-bottom: 1em;
+  border-radius: 7px;
 }
 
 .inner-comment-container{
   margin: 1em;
-  padding-bottom: 1em;
 }
 
 .comment-avatar{
-  // margin: 0.5em;
   border-radius: 50%;
   max-width: 100%;
   max-height: 100%;
   // clip-path: circle(4em at center);
+}
+
+
+.comment-timestamp {
+  color: rgb(100,100,100);
+  text-align: center;
+}
+
+.comment-username {
+  font-size: 1.5em;
 }
