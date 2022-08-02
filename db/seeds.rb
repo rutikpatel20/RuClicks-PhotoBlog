@@ -18,3 +18,4 @@
   blog.save
   puts "------------ Blog #{i} Saved ------------"
 end
+AdminUser.create!(email: "admin@example.com", username: "admin", password: "password", password_confirmation: "password") if Rails.env.development?

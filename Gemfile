@@ -59,14 +59,17 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise"
 
-gem 'net-smtp', require: false
-gem 'net-imap', require: false
-gem 'net-pop', require: false
+gem "net-smtp", require: false
+gem "net-imap", require: false
+gem "net-pop", require: false
 
 gem "jquery-rails"
 
 # Generate Fake date
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem "faker", :git => "https://github.com/faker-ruby/faker.git", :branch => "master"
 
 # Pagination
-gem 'kaminari'
+gem "kaminari"
+
+# Admin Panel
+gem "activeadmin"
