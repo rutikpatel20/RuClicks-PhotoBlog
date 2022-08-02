@@ -12,4 +12,7 @@ class Blog < ApplicationRecord
   has_one_attached :thumbnail do |attachable|
     attachable.variant :thumb, resize_to_limit: [350, 350]
   end
+
+  # Pagination
+  paginates_per 10
 end

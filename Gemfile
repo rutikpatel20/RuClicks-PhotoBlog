@@ -67,3 +67,6 @@ gem "jquery-rails"
 
 # Generate Fake date
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+# Pagination
+gem 'kaminari'
