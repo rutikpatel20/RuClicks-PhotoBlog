@@ -1,37 +1,26 @@
-<div class="center flex-column" style= "height: auto;">
-  <!--Error Message-->
-  <% if flash[:errors] %>
-    <% flash.each do |name,message| %>
-      <p class="text-success"><%= message%></p>
-    <% end %>
-  <% end %>
-  <!-- Blog Table -->
-  <div class="grid-container">
-    <% @blogs.each do |b| %>
-      <div class="showcard">
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <% if b.photo.attached? %>
-              <%= image_tag b.photo, alt: "Image not loaded"  %>
-            <% end %>
-            <h5 class="card-title"><%= link_to b.title, blog_path(b) %></h5>
-            <p class="card-text"><%= b.subtitle %></p>
-            <div class="created-info">
-              <p class="card-text">
-                <small class="text-muted">
-                  <%= b.updated_at.strftime("%A, %B %e, %Y") %> by 
-                  <%= b.user.username %> <br>
-                  <%= pluralize(b.views, "View") %>
-                </small>
-              </p>
-            </div>
-            <div class="card_btn">
-              <%= button_to "Edit" , edit_blog_path(b), method: :get ,class:"btn btn-outline-success shadow px-3 py-2 b-2" %>
-              <%= button_to "Delete", blog_path(b), method: :delete ,class:"btn btn-outline-danger shadow px-3 py-2 b-2" %>
-            </div>
+<div class="container mt-4">
+  <% @blogs.each do |blog| %>
+    <div class="p-md-5 mb-4 rounded border">
+      <div class="col-12 px-0 d-flex align-items-center justify-content-between">
+        <div>
+          <h1 class="display-4 fst-italic blog-title"><%= link_to blog.title, blog_path(blog) %></h1>
+          <p class="lead my-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita vel natus commodi adipisci fuga nobis inventore! Nihil illum dignissimos quasi? Rerum, iusto. Fugiat explicabo ratione consequatur et, sed repellat enim.</p>
+          <div class="text-muted mb-1">
+            <%= blog.updated_at.strftime("%A, %B %e, %Y") %> by 
+            <%= blog.user.username %> <br>
+            <%= pluralize(blog.views, "View") %>
+          </div>
+          <div class="d-flex">
+            <%= button_to "Edit" , edit_blog_path(blog), method: :get ,class:"btn btn-outline-success shadow px-3 py-2" %>
+            <%= button_to "Delete", blog_path(blog), method: :delete ,class:"btn btn-outline-danger shadow ms-2 px-3 py-2" %>
           </div>
         </div>
+        <div class="d-none d-lg-block">
+          <% if blog.thumbnail.attached? %>
+            <%= image_tag blog.thumbnail, alt: "Image not loaded", class: "img-fluid"  %>
+          <% end %>
+        </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
