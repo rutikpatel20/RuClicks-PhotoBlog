@@ -1,27 +1,30 @@
 <!-- Blog Details Showing -->
-<div class="center flex-column showpage">
-  <div class="showcard">
-    <div class="card" style="width: 60rem;">
-      <div class="row no-gutters">
-        <div class="col">
-          <div class="card-body ">
-            <h5 class="card-title">Title :  <%= @blog.title %></h5>
-            <p class="card-text">Subtitle : <%= @blog.subtitle %></p>
-            <% if @blog.photo.attached? %>
-              <p class="card-text">Image : <%= image_tag @blog.photo %> </p>
-            <% end %>
-            <div class="card_btn mt-5">
-              <%= button_to "Edit" , edit_blog_path, method: :get ,class:"btn btn-outline-success shadow px-5 py-2 m-2" %>
-              <%= button_to "Delete", blog_path(@blog), method: :delete ,class:"btn btn-outline-danger shadow px-5 py-2 m-2" %>
-              <%= button_to "View All Blogs", blogs_path, method: :get ,class:"btn btn-outline-primary shadow p-2 m-2" %>
-            </div>
+<div class="container mt-4">
+  <div class="row g-5 mb-4">
+    <div class="col-12">
+      <article>
+        <div class="d-flex justify-content-between">
+          <h2><%= @blog.title %></h2>
+          <div class="d-flex">
+            <%= button_to "Edit" , edit_blog_path, method: :get ,class:"btn btn-outline-success shadow px-5 py-2" %>
+            <%= button_to "Delete", blog_path(@blog), method: :delete ,class:"btn btn-outline-danger shadow px-5 py-2 ms-2" %>
           </div>
         </div>
-      </div>
+        <p>
+          <%= @blog.updated_at.strftime("%A, %B %e, %Y") %> by 
+          <%= @blog.user.username %> <br>
+          <%= pluralize(@blog.views, "View") %> <br>
+          <%= @blog.subtitle %>
+        </p>
+        <hr>
+        <% if @blog.photo.attached? %>
+          <%= image_tag @blog.photo, alt:"Image Not Loaded", class:"img-fluid" %>
+        <% end %>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati ratione dolorum doloribus incidunt quasi dicta culpa, reprehenderit ipsum aliquam debitis molestias! Nam dicta, voluptates maiores sed ea aliquid? Doloremque tempore officia alias dicta velit commodi saepe quibusdam praesentium, accusamus modi reiciendis corrupti iusto odit voluptate maxime mollitia sequi veniam porro. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam voluptate recusandae sapiente, sequi magni, rerum, quasi ipsam nemo numquam vitae autem cum similique explicabo iste placeat impedit veniam animi possimus labore ad ratione. Molestiae, ad vero? Nisi omnis pariatur optio accusamus incidunt nam, excepturi impedit fugit. Assumenda aliquid sapiente suscipit?</p>
+      </article>
     </div>
   </div>
-</div>
-<div class="container">
+  <!-- Comment Section Start Here -->
   <%= render 'comments/form', commentable: @blog, local: Comment.new %>
   <div id="comment-pane">
     <% @comments.each do |comment| %>
