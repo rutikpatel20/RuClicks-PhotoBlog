@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.reply = true if params[:comment_id]
     @comment.save
+    render :json => @comment.comments
   end
 
   def edit
@@ -16,11 +17,13 @@ class CommentsController < ApplicationController
   def update
     # To Store Comment History
     if @comment.edit_history == ""
-      @comment.edit_history = "Original: " + @comment.body.body.to_plain_text + "\n"
+      @comment.edit_history = "Original: " + @comment.comment_body + "\n"
     else
-      @comment.edit_history = @comment.edit_history + "Edit: " + params[:comment][:body] + "\n"
+      @comment.edit_history = @comment.edit_history + "Edit: " + params[:comment][:comment_body] + "\n"
     end
     @comment.update(comment_params)
+    render :json => @comment
+    # render :json => @comment.comments
   end
 
   def destroy
@@ -30,16 +33,16 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:comment_body)
   end
 
   def find_commentable
     # Comment
     if params[:comment_id]
       @commentable = Comment.find_by_id(params[:comment_id])
-    elsif params[:post_id]
-      # Post
-      @commentable = Post.find(params[:post_id])
+    elsif params[:blog_id]
+      # Blog
+      @commentable = Blog.find(params[:blog_id])
     end
   end
 

@@ -21,3 +21,11 @@
     </div>
   </div>
 </div>
+<div class="container">
+  <%= render 'comments/form', commentable: @blog, local: Comment.new %>
+  <div id="comment-pane">
+    <% @comments.each do |comment| %>
+      <%= render comment %>
+    <% end %>
+  </div>
+</div>

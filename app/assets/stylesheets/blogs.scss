@@ -1,3 +1,31 @@
 // Place all the styles related to the blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.comment-container{
+  box-shadow: 1px 1px 7px 1px black;
+  margin: 1em;
+  padding-bottom: 1em;
+  border-radius: 7px;
+}
+
+.inner-comment-container{
+  margin: 1em;
+}
+
+.comment-avatar{
+  border-radius: 50%;
+  max-width: 100%;
+  max-height: 100%;
+  // clip-path: circle(4em at center);
+}
+
+
+.comment-timestamp {
+  color: rgb(100,100,100);
+  text-align: center;
+}
+
+.comment-username {
+  font-size: 1.5em;
+}
