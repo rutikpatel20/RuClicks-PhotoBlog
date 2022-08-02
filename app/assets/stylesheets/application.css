@@ -12,4 +12,5 @@
  *
  *= require_tree .
  *= require_self
+ *= require_vendor/assets/stylesheets/active_admin.scss
  */
