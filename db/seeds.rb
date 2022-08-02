@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+30.times do |i|
+  blog = Blog.new
+  blog.title = Faker::Lorem.sentence(word_count: 3)
+  blog.subtitle = Faker::Lorem.sentences(number: 1)
+  # seed image from local
+  blog.photo.attach(io: File.open("#{Rails.root}/app/assets/images/laptop.jpeg"), filename: "#{i}_photo.jpeg")
+  blog.thumbnail.attach(io: File.open("#{Rails.root}/app/assets/images/thumbnail-dummy.png"), filename: "#{i}_thumbnail.png")
+  blog.user = User.first
+  blog.views = Faker::Number.number(digits: 3)
+  blog.save
+  puts "------------ Blog #{i} Saved ------------"
+end
