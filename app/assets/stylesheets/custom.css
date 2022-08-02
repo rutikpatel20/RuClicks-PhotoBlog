@@ -17,32 +17,13 @@ body {
   align-items: center;
 }
 
-.grid-container .card-title a {
+.blog-title a {
   text-decoration: none !important;
   color: #000;
 }
 
-.grid-container .card-title a:hover {
-  color: rgb(117 117 117);
-  letter-spacing: 2px;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-}
-
-.grid-container .showcard .card {
-  text-align: center;
-  padding: 1.5em 0.5em 0.5em;
-}
-
-.grid-container .showcard .card-body {
-  padding: 0;
-}
-
-.grid-container .showcard .card img {
-  margin-bottom: 20px;
+.blog-title a:hover {
+  color: #dc3545;
 }
 
 .showcard .card {
