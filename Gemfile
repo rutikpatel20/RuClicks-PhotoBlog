@@ -73,3 +73,6 @@ gem "kaminari"
 
 # Admin Panel
 gem "activeadmin"
+
+# Arctic Admin Theme
+gem "arctic_admin"

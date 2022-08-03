@@ -9,9 +9,35 @@
 
 // Active Admin's got SASS!
 @import "active_admin/mixins";
-@import "active_admin/base";
+// @import "active_admin/base";
 
-// Overriding any non-variable Sass must be done after the fact.
-// For example, to change the default status-tag color:
-//
-//   .status_tag { background: #6090DB; }
+$primary-color: #703af5;
+@import "arctic_admin/base";
+
+// Dashboard Styling
+.dashboard-header{
+  background-color: #703af5;
+  margin: 2rem 0;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.dashboard-header p{
+ font-size: 1.3rem;
+}
+
+.dashboard-footer{
+  background-color: #703af5;
+  padding: 1rem;
+  margin-top: 6rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.dashboard-footer h3{
+  
+}

@@ -10,24 +10,32 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
-    # Here is an example of a simple dashboard with columns and panels.
-    #
-    # columns do
-    #   column do
-    #     panel "Recent Posts" do
-    #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
-    #         end
-    #       end
-    #     end
-    #   end
+    div class: "dashboard-header" do
+      columns do
+        column do
+          para "Welcome to RuClicks - PhotoBlog"
+        end
+      end
+    end
 
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
-    # end
-  end # content
+    panel "Latest Blogs" do
+      table_for Blog.order(created_at: :desc).first(5).map do
+        column "Title" do |blog|
+          link_to blog.title, admin_blog_path(blog)
+        end
+        column :subtitle
+        column :user
+        column :created_at
+        column :updated_at
+      end
+    end
+
+    div class: "dashboard-footer" do
+      columns do
+        column do
+          h3 "Made By Rutvik Patel"
+        end
+      end
+    end
+  end
 end
