@@ -53,4 +53,23 @@ ActiveAdmin.register Blog do
 
   filter :created_at
   filter :updated_at
+
+  # Show Page Modification
+  show do
+    attributes_table do
+      row :title
+      row :subtitle
+      row :user
+      row :views
+      row :created_at
+      row :updated_at
+      row :photo do |photo|
+        image_tag url_for(photo.photo), style: "width: 20%"
+      end
+      row :thumbnail do |thumb|
+        image_tag thumb.thumbnail, size: "300x300"
+      end
+    end
+    active_admin_comments
+  end
 end
