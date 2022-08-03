@@ -30,4 +30,27 @@ ActiveAdmin.register Blog do
   #   permitted
   # end
 
+  # Index Page Modification
+  index do
+    selectable_column
+    column :id
+    column "Title" do |blog|
+      link_to blog.title, admin_blog_path(blog)
+    end
+    column :subtitle
+    column :user
+
+    column :created_at
+    column :updated_at
+    actions
+  end
+
+  # Filters
+  filter :user
+  filter :title
+  filter :subtitle
+  filter :views
+
+  filter :created_at
+  filter :updated_at
 end
