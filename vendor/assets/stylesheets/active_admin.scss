@@ -13,3 +13,31 @@
 
 $primary-color: #703af5;
 @import "arctic_admin/base";
+
+// Dashboard Styling
+.dashboard-header{
+  background-color: #703af5;
+  margin: 2rem 0;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.dashboard-header p{
+ font-size: 1.3rem;
+}
+
+.dashboard-footer{
+  background-color: #703af5;
+  padding: 1rem;
+  margin-top: 6rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.dashboard-footer h3{
+  
+}
