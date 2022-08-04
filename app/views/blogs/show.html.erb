@@ -20,7 +20,7 @@
         <% if @blog.photo.attached? %>
           <%= image_tag @blog.photo, alt:"Image Not Loaded", class:"img-fluid" %>
         <% end %>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati ratione dolorum doloribus incidunt quasi dicta culpa, reprehenderit ipsum aliquam debitis molestias! Nam dicta, voluptates maiores sed ea aliquid? Doloremque tempore officia alias dicta velit commodi saepe quibusdam praesentium, accusamus modi reiciendis corrupti iusto odit voluptate maxime mollitia sequi veniam porro. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam voluptate recusandae sapiente, sequi magni, rerum, quasi ipsam nemo numquam vitae autem cum similique explicabo iste placeat impedit veniam animi possimus labore ad ratione. Molestiae, ad vero? Nisi omnis pariatur optio accusamus incidunt nam, excepturi impedit fugit. Assumenda aliquid sapiente suscipit?</p>
+        <p><%= @blog.blog_body %></p>
       </article>
     </div>
   </div>

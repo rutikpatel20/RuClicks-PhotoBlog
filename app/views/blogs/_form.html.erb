@@ -1,4 +1,4 @@
-<div class="center flex-column form">
+<div class="center flex-column form h-auto mt-3">
   <div class="card shadow" style="width: 36rem;">
     <div class="card-header">
       <h2 class="text-center mt-2">Blog Form</h2>
@@ -14,11 +14,17 @@
       <%= form_with model: @blog do |f| %>
         <%#= f.hidden_field :user_id, :value => current_user.id %>
         <br>
+        <%= f.label :category, "Category :", class:"mt-3" %>
+        <%= f.select :category_id, Category.all.map { |c| [c.category, c.id]}, placeholder: "Choose Category Here", class:"mb-2 form-control" %>
+        <br>
         <%= f.label :title, "Blog Title :", class:"mt-3" %>
         <%= f.text_field :title, placeholder: "Enter Title Here", class:"mb-2 form-control" %>
         <br>
-        <%= f.label :subtitle, "Enter Subtitle Here :" %>
+        <%= f.label :subtitle, "Subtitle :" %>
         <%= f.text_field :subtitle, placeholder: "Enter Subtitle Here", class:"mb-2 form-control" %>
+        <br>
+        <%= f.label :blog_body, "Body :" %>
+        <%= f.text_area :blog_body, rows: 10, placeholder: "Enter Your Main Content Here", class:"mb-2 form-control" %>
         <br>
         <%= f.label :photo, "Photo :" %>
         <%= f.file_field :photo, class:"mb-2 form-control" %>
