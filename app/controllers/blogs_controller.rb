@@ -3,7 +3,12 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @blogs = Blog.all.page(params[:page]).order("created_at DESC")
+    if params[:category].blank?
+      @blogs = Blog.all.page(params[:page]).order("created_at DESC")
+    else
+      @category_id = Category.find_by(category: params[:category]).id
+      @blogs = Blog.where(category_id: @category_id).page(params[:page]).order("created_at DESC")
+    end
   end
 
   def new
@@ -56,6 +61,6 @@ class BlogsController < ApplicationController
   end
 
   def blog_params
-    params.require(:blog).permit(:title, :subtitle, :photo, :thumbnail, :blog_body)
+    params.require(:blog).permit(:title, :subtitle, :photo, :thumbnail, :blog_body, :category_id)
   end
 end

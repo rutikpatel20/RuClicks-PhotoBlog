@@ -1,4 +1,10 @@
 <div class="container mt-4">
+  <div class="d-inline d-flex justify-content-around align-items-center mb-2">
+    <% Category.all.each do |category| %>
+      <%= link_to category.category, blogs_path(category: category.category), class:"text-decoration-none text-dark" %>
+    <% end %>
+  </div>
+  <hr class="mb-5">
   <% @blogs.each do |blog| %>
     <div class="p-md-5 mb-4 rounded border">
       <div class="col-12 px-0 d-flex align-items-center justify-content-between">
