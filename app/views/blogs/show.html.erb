@@ -10,11 +10,12 @@
             <%= button_to "Delete", blog_path(@blog), method: :delete ,class:"btn btn-outline-danger shadow px-5 py-2 ms-2" %>
           </div>
         </div>
+          <p class="badge bg-danger"> <%= @blog.category.category %> </p> <br>
         <p>
           <%= @blog.updated_at.strftime("%A, %B %e, %Y") %> by 
           <%= @blog.user.username %> <br>
           <%= pluralize(@blog.views, "View") %> <br>
-          <%= @blog.subtitle %>
+          <strong> <%= @blog.subtitle %> </strong>
         </p>
         <hr>
         <% if @blog.photo.attached? %>
