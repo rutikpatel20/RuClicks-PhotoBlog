@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @blogs = Blog.all.page(params[:page])
+    @blogs = Blog.all.page(params[:page]).order("created_at DESC")
   end
 
   def new
@@ -56,6 +56,6 @@ class BlogsController < ApplicationController
   end
 
   def blog_params
-    params.require(:blog).permit(:title, :subtitle, :photo, :thumbnail)
+    params.require(:blog).permit(:title, :subtitle, :photo, :thumbnail, :blog_body)
   end
 end

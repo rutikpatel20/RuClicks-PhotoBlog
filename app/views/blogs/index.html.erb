@@ -4,7 +4,7 @@
       <div class="col-12 px-0 d-flex align-items-center justify-content-between">
         <div>
           <h1 class="display-4 fst-italic blog-title"><%= link_to blog.title, blog_path(blog) %></h1>
-          <p class="lead my-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita vel natus commodi adipisci fuga nobis inventore! Nihil illum dignissimos quasi? Rerum, iusto. Fugiat explicabo ratione consequatur et, sed repellat enim.</p>
+          <p class="lead my-3"><%= blog.blog_body.truncate_words(30) %></p>
           <div class="text-muted mb-1">
             <%= blog.updated_at.strftime("%A, %B %e, %Y") %> by 
             <%= blog.user.username %> <br>
