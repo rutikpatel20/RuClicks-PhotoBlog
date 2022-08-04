@@ -1,15 +1,16 @@
 <div class="container mt-4">
-  <div class="d-inline d-flex justify-content-around align-items-center mb-2">
+  <div class="d-inline d-flex justify-content-around align-items-center category-nav">
     <% Category.all.each do |category| %>
       <%= link_to category.category, blogs_path(category: category.category), class:"text-decoration-none text-dark" %>
     <% end %>
   </div>
-  <hr class="mb-5">
+  <hr class="mt-2 mb-5">
   <% @blogs.each do |blog| %>
     <div class="p-md-5 mb-4 rounded border">
       <div class="col-12 px-0 d-flex align-items-center justify-content-between">
         <div>
           <h1 class="display-4 fst-italic blog-title"><%= link_to blog.title, blog_path(blog) %></h1>
+          <p class="badge bg-danger"> <%= blog.category.category %> </p>
           <p class="lead my-3"><%= blog.blog_body.truncate_words(30) %></p>
           <div class="text-muted mb-1">
             <%= blog.updated_at.strftime("%A, %B %e, %Y") %> by 
