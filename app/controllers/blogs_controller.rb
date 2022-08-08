@@ -4,10 +4,24 @@ class BlogsController < ApplicationController
 
   def index
     if params[:category].blank?
-      @blogs = Blog.all.page(params[:page]).order("created_at DESC")
+      # Ransack Searching
+      search = params[:q].present? ? params[:q] : nil
+      @blogs = if search
+          @query = Blog.ransack(params[:q])
+          @blogs = @query.result(distinct: true).page(params[:page])
+        else
+          Blog.all.page(params[:page]).order("created_at DESC")
+        end
     else
       @category_id = Category.find_by(category: params[:category]).id
-      @blogs = Blog.where(category_id: @category_id).page(params[:page]).order("created_at DESC")
+      # Ransack Searching
+      search = params[:q].present? ? params[:q] : nil
+      @blogs = if search
+          @query = Blog.ransack(params[:q])
+          @blogs = @query.result(distinct: true).page(params[:page])
+        else
+          @blogs = Blog.where(category_id: @category_id).page(params[:page]).order("created_at DESC")
+        end
     end
   end
 

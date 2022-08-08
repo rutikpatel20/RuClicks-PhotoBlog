@@ -76,3 +76,6 @@ gem "activeadmin"
 
 # Arctic Admin Theme
 gem "arctic_admin"
+
+# Search Feature
+gem 'ransack'
