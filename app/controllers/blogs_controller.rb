@@ -3,11 +3,13 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
+    @query = Blog.ransack(params[:q])
+    @blogs = @query.result(distinct: true).order("created_at DESC")
     if params[:category].blank?
-      @blogs = Blog.all.page(params[:page]).order("created_at DESC")
+      @blogs = Blog.all.page(params[:page])
     else
       @category_id = Category.find_by(category: params[:category]).id
-      @blogs = Blog.where(category_id: @category_id).page(params[:page]).order("created_at DESC")
+      @blogs = Blog.where(category_id: @category_id).page(params[:page])
     end
   end
 
