@@ -7,10 +7,10 @@ class BlogsController < ApplicationController
     @query = Blog.ransack(params[:q])
     @blogs = @query.result(distinct: true).order("created_at DESC")
     if params[:category].blank?
-      @blogs = Blog.all.page(params[:page])
+      @blogs = Blog.all.page(params[:page]).order("created_at DESC")
     else
       @category_id = Category.find_by(category: params[:category]).id
-      @blogs = Blog.where(category_id: @category_id).page(params[:page])
+      @blogs = Blog.where(category_id: @category_id).page(params[:page]).order("created_at DESC")
     end
   end
 
