@@ -17,4 +17,7 @@ class Blog < ApplicationRecord
   paginates_per 10
 
   belongs_to :category
+
+  # Action Text for Blog Body
+  has_rich_text :action_blog_body
 end

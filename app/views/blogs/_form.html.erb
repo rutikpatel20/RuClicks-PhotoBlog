@@ -26,6 +26,10 @@
         <%= f.label :blog_body, "Body :" %>
         <%= f.text_area :blog_body, rows: 10, placeholder: "Enter Your Main Content Here", class:"mb-2 form-control" %>
         <br>
+        <br>
+        <%= f.label :action_blog_body, "Action Body :" %>
+        <%= f.rich_text_area :action_blog_body, rows: 10, placeholder: "Enter Your Main Content Here", class:"mb-2 form-control" %>
+        <br>
         <%= f.label :photo, "Photo :" %>
         <%= f.file_field :photo, class:"mb-2 form-control" %>
         <br>
