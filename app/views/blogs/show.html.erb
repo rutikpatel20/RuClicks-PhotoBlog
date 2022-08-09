@@ -1,5 +1,9 @@
 <!-- Blog Details Showing -->
 <div class="container mt-4">
+  <div class="breadcrumb">
+    <%= render_breadcrumbs %>
+  </div>
+  <hr class="mt-2 mb-5">
   <div class="row g-5 mb-4">
     <div class="col-12">
       <article>
@@ -11,7 +15,7 @@
           </div>
         </div>
         <p class="badge bg-danger"> <%= @blog.category.category %> </p>
- <br>
+        <br>
         <p>
           <%= @blog.updated_at.strftime("%A, %B %e, %Y") %> by 
           <%= @blog.user.username %> <br>
