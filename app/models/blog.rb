@@ -19,5 +19,5 @@ class Blog < ApplicationRecord
   belongs_to :category
 
   # Action Text for Blog Body
-  has_rich_text :action_blog_body
+  has_rich_text :blog_body
 end
