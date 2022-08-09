@@ -21,7 +21,6 @@
         <% if @blog.photo.attached? %>
           <%= image_tag @blog.photo, alt:"Image Not Loaded", class:"img-fluid" %>
         <% end %>
-        <p><%= @blog.blog_body %></p> <hr>
         <p><%= @blog.action_blog_body %></p>
       </article>
     </div>
