@@ -5,7 +5,7 @@ ActiveAdmin.register Blog do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :subtitle, :views, :user_id, :photo, :thumbnail
+  permit_params :title, :subtitle, :views, :user_id, :photo, :thumbnail, :category_id, :blog_body
 
   form do |f|
     f.inputs "Blog" do
@@ -16,6 +16,8 @@ ActiveAdmin.register Blog do
       # f.input :user_id
       # Display Dropdown for users
       f.input :user
+      f.input :category_id, label: "Category", as: :select, collection: Category.all.map { |c| [c.category, c.id] }
+      f.rich_text_area :blog_body
       f.input :photo, as: :file
       f.input :thumbnail, as: :file
     end

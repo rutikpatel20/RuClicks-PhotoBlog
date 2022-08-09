@@ -82,3 +82,5 @@ gem 'ransack'
 
 # Breadcrumbs Navigation
 gem "breadcrumbs_on_rails"
+
+gem "pry"
