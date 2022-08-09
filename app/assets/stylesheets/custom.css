@@ -58,3 +58,9 @@ body {
     -moz-appearance: none;
     appearance: none;
 }
+
+.breadcrumb a{
+  color: #dc3545 !important;
+  text-decoration: none;
+  margin: 0 8px;
+}

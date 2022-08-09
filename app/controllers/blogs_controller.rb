@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  add_breadcrumb "RuClicks", :root_path
 
   def index
     @query = Blog.ransack(params[:q])
@@ -30,6 +31,10 @@ class BlogsController < ApplicationController
   end
 
   def show
+    # Breadcrumb Navbar
+    add_breadcrumb "#{@blog.category.category}", blogs_path, title: "Back to the Home"
+    add_breadcrumb "#{@blog.title}", blog_path(@blog)
+    # Views Update
     views = @blog.views + 1
     @blog.update(views: views)
     @comments = @blog.comments.order("created_at DESC")

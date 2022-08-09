@@ -43,7 +43,7 @@
       </div>
       <div class="search-form d-flex align-items-center">
         <%= search_form_for(@query, url: blogs_path, method: :get, class:"d-flex ms-2") do |f| %>
-          <%= f.search_field :title_or_subtitle_or_blog_body_i_cont_any, placeholder: "Search Blogs...", class: "form-control me-2" %>
+          <%= f.search_field :title_or_subtitle_i_cont_any, placeholder: "Search Blogs...", class: "form-control me-2" %>
           <%= f.submit "Search", class: "btn btn-outline-light" %>
         <% end %>
         <%= button_to "Clear", blogs_path, method: :get, class: "btn btn-outline-dark ms-1" %>

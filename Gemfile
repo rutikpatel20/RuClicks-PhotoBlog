@@ -79,3 +79,6 @@ gem "arctic_admin"
 
 # Search Feature
 gem 'ransack'
+
+# Breadcrumbs Navigation
+gem "breadcrumbs_on_rails"
