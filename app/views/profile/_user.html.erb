@@ -1,9 +1,21 @@
-<h1><%=user.email %></h1>
-<br>
-<%= render 'profile/follower_count', user: user %>
-<div> <%= user.followees.count %> Following </div>
+<h4 class="mb-2"><%= user.first_name %> <%= user.last_name %></h4>
+<p class="text-muted mb-4"><%= user.username %> <span class="mx-2">|</span> <a href="#!"><%= user.email %></a></p>
+<div class="d-flex justify-content-around align-items-center text-center mt-5 mb-2">
+  <div>
+    <p class="mb-2 h5"><%= Blog.where(user_id: user.id).count %></p>
+    <button class="btn text-muted mb-0">Blogs</button>
+  </div>
+  <div>
+    <h5 class="mb-2"><%= user.followees.count %></h5>
+    <button class="btn text-muted mb-0">Following</button>
+  </div>
+  <div>
+    <%= render 'profile/follower_count', user: user %>
+  </div>
+</div>
+<%#  %>
 <% if user == current_user %>
-  <%= link_to "Edit Profile", edit_user_registration_path %>
+  <%= link_to "Edit Profile", edit_user_registration_path, class:"btn btn-danger" %>
 <% elsif current_user %>
   <%= render 'profile/follow_button', user: @user %>
 <% end %>

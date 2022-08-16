@@ -1,1 +1,11 @@
-<div> <%= pluralize(user.followers.count, "follower")  %> </div>
+<!-- <div> <%= pluralize(user.followers.count, "follower")  %> </div> -->
+<!-- Pluralize method with styling -->
+<h5 class="mb-2"><%= user.followers.count %></h5>
+<div>
+  <% word = "Follower" %>
+  <% if user.followers.count > 1 %>
+    <button class="btn text-muted mb-0"> <%= word.pluralize %> </button>
+  <% else %>
+    <button class="btn text-muted mb-0"> <%= word %> </button>
+  <% end %>
+</div>
