@@ -29,5 +29,5 @@ Rails.application.routes.draw do
 
   post "profile/follow", to: "profile#follow"
   delete "profile/unfollow", to: "profile#unfollow"
-  get "/p", to: "profile#index"
+  get "/profile", to: "profile#index"
 end
