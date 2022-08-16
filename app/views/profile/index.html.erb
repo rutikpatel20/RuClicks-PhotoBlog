@@ -41,7 +41,7 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-12 col-xl-4">
           <div class="card shadow" style="border-radius: 15px;">
-            <button id="back_click1", class="btn btn-close mt-2 ms-2", onclick= "GoBackDiv1()"></button>
+            <button id="back_click1", class="btn btn-close mt-2 ms-2", onclick= "GoBackDiv()"></button>
             <div class="card-body text-center">
               <h4 class="border bg-danger text-light">FOLLOWING</h4>
               <% current_user.followees.each do |u| %>
@@ -70,7 +70,7 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-12 col-xl-4">
           <div class="card shadow" style="border-radius: 15px;">
-            <button id="back_click2", class="btn btn-close mt-2 ms-2", onclick= "GoBackDiv2()"></button>
+            <button id="back_click2", class="btn btn-close mt-2 ms-2", onclick= "GoBackDiv()"></button>
             <div class="card-body text-center">
               <h4 class="border bg-danger text-light">FOLLOWERS</h4>
               <% current_user.followers.each do |follower| %>
@@ -102,11 +102,13 @@
       main_profile.style.display = 'none';
   }
 
-  function GoBackDiv1() {
+  function GoBackDiv() {
     console.log("THis is GO BACK DIV 1");
     var followees_div = document.getElementById("followees_div");
     var main_profile = document.getElementById("main_profile");
+    var followers_div = document.getElementById("followers_div");
     followees_div.style.display = 'none';
+    followers_div.style.display = 'none';
     main_profile.style.display = 'block';
   }
 
@@ -116,13 +118,5 @@
     var main_profile = document.getElementById("main_profile");
       followers_div.style.display = 'block';
       main_profile.style.display = 'none';
-  }
-
-  function GoBackDiv2() {
-    console.log("THis is GO BACK DIV 2");
-    var followers_div = document.getElementById("followers_div");
-    var main_profile = document.getElementById("main_profile");
-    followers_div.style.display = 'none';
-    main_profile.style.display = 'block';
   }
 </script>
