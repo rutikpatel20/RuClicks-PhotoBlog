@@ -23,5 +23,11 @@ Rails.application.routes.draw do
 
   root "blogs#index"
   get "/confirmation_pending" => "static_pages#after_registration_path"
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # Follower System
+  get "p/:id", to: "profile#show"
+
+  post "profile/follow", to: "profile#follow"
+  delete "profile/unfollow", to: "profile#unfollow"
+  get "/profile", to: "profile#index"
 end

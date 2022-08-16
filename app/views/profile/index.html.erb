@@ -1,0 +1,104 @@
+<div >
+  <section class="vh-100">
+    <div class="container h-75">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-12 col-xl-4">
+          <!-- Main Profile Card Started Here -->
+          <div class="card shadow" id="main_profile" style="display: block; border-radius: 15px;">
+            <div class="card-body text-center">
+              <div class="mt-3 mb-4">
+                <%= image_tag("user2.png", :class => "rounded-circle img-fluid", :style => "width: 100px;", :alt => "User Image") %>
+              </div>
+              <h4 class="mb-2"><%= current_user.first_name %> <%= current_user.last_name %></h4>
+              <p class="text-muted mb-4"><%= current_user.username %> <span class="mx-2">|</span> <a
+                href="#!"><%= current_user.email %></a></p>
+              <p class="text-muted mb-4"><%= current_user.contact_number %> </p>
+              <p class="text-muted mb-4"><%= current_user.address %> </p>
+              <div class="d-flex justify-content-around align-items-center text-center mt-5 mb-2">
+                <div>
+                  <p class="mb-2 h5"><%= Blog.where(user_id: current_user.id).count %></p>
+                  <button class="btn text-muted mb-0">Blogs</button>
+                </div>
+                <div>
+                  <h5 class="mb-2"><%= current_user.followees.count %></h5>
+                  <button class="btn text-muted mb-0", id="click", onclick= "ShowFolloweesDiv()">Following</button>
+                </div>
+                <div>
+                  <h5 class="mb-2"><%= current_user.followers.count %></h5>
+                  <button class="btn text-muted mb-0", id="click", onclick= "ShowFollowersDiv()">Followers</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Main Profile Card Ended Here -->
+          <!-- Followees CARD Started Here -->
+          <div class="card shadow" id="followees_div" style="display: none; border-radius: 15px;">
+            <button id="back_click1", class="btn btn-close mt-2 ms-2", onclick= "GoBackDiv()"></button>
+            <div class="card-body text-center">
+              <h4 class="border bg-danger text-light">FOLLOWING</h4>
+              <% current_user.followees.each do |u| %>
+                <div class="d-flex justify-content-evenly align-items-center text-center mt-5 mb-2 pb-1 border-bottom">
+                  <div class="user_image">
+                    <%= image_tag("user2.png", :class => "rounded-circle img-fluid", :style => "width: 70px;", :alt => "User Image") %>
+                  </div>
+                  <div class="user_details my-auto">
+                    <h4> <%= u.username %></h4>
+                    <p style = "margin-bottom: 0 !important;"> <%= u.email %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <!-- Followees CARD Ended Here -->
+          <!-- Followers CARD Started Here -->
+          <div class="card shadow" id="followers_div" style="display: none; border-radius: 15px;">
+            <button id="back_click2", class="btn btn-close mt-2 ms-2", onclick= "GoBackDiv()"></button>
+            <div class="card-body text-center">
+              <h4 class="border bg-danger text-light">FOLLOWERS</h4>
+              <% current_user.followers.each do |follower| %>
+                <div class="d-flex justify-content-evenly align-items-center text-center mt-5 mb-2 pb-1 border-bottom">
+                  <div class="user_image">
+                    <%= image_tag("user2.png", :class => "rounded-circle img-fluid", :style => "width: 70px;", :alt => "User Image") %>
+                  </div>
+                  <div class="user_details my-auto">
+                    <h4> <%= follower.username %></h4>
+                    <p style = "margin-bottom: 0 !important;"> <%= follower.email %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <!-- Followers CARD Ended Here -->
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- JAVASCRIPT -->
+<script type="text/javascript">
+  function ShowFolloweesDiv() {
+    console.log("THIS IS SHOW FOLLOWEES DIV");
+    var followees_div = document.getElementById("followees_div");
+    var main_profile = document.getElementById("main_profile");
+      followees_div.style.display = 'block';
+      main_profile.style.display = 'none';
+  }
+
+  function GoBackDiv() {
+    console.log("THis is GO BACK DIV 1");
+    var followees_div = document.getElementById("followees_div");
+    var main_profile = document.getElementById("main_profile");
+    var followers_div = document.getElementById("followers_div");
+    followees_div.style.display = 'none';
+    followers_div.style.display = 'none';
+    main_profile.style.display = 'block';
+  }
+
+  function ShowFollowersDiv() {
+    console.log("THIS IS SHOW FOLLOWEES DIV");
+    var followers_div = document.getElementById("followers_div");
+    var main_profile = document.getElementById("main_profile");
+      followers_div.style.display = 'block';
+      main_profile.style.display = 'none';
+  }
+</script>
