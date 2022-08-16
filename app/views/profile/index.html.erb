@@ -1,9 +1,10 @@
-<div id="main_profile" style="display: block;">
+<div >
   <section class="vh-100">
     <div class="container h-75">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-12 col-xl-4">
-          <div class="card shadow" style="border-radius: 15px;">
+          <!-- Main Profile Card Started Here -->
+          <div class="card shadow" id="main_profile" style="display: block; border-radius: 15px;">
             <div class="card-body text-center">
               <div class="mt-3 mb-4">
                 <%= image_tag("user2.png", :class => "rounded-circle img-fluid", :style => "width: 100px;", :alt => "User Image") %>
@@ -29,18 +30,9 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-<!-- Followees Div Started Here -->
-<div id="followees_div" style="display: none;">
-  <section class="vh-100">
-    <div class="container h-75">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-12 col-xl-4">
-          <div class="card shadow" style="border-radius: 15px;">
+          <!-- Main Profile Card Ended Here -->
+          <!-- Followees CARD Started Here -->
+          <div class="card shadow" id="followees_div" style="display: none; border-radius: 15px;">
             <button id="back_click1", class="btn btn-close mt-2 ms-2", onclick= "GoBackDiv()"></button>
             <div class="card-body text-center">
               <h4 class="border bg-danger text-light">FOLLOWING</h4>
@@ -57,19 +49,9 @@
               <% end %>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-<!-- Followees Div Ended Here -->
-<!-- Followers Div Started Here -->
-<div id="followers_div" style="display: none;">
-  <section class="vh-100">
-    <div class="container h-75">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-12 col-xl-4">
-          <div class="card shadow" style="border-radius: 15px;">
+          <!-- Followees CARD Ended Here -->
+          <!-- Followers CARD Started Here -->
+          <div class="card shadow" id="followers_div" style="display: none; border-radius: 15px;">
             <button id="back_click2", class="btn btn-close mt-2 ms-2", onclick= "GoBackDiv()"></button>
             <div class="card-body text-center">
               <h4 class="border bg-danger text-light">FOLLOWERS</h4>
@@ -86,12 +68,12 @@
               <% end %>
             </div>
           </div>
+          <!-- Followers CARD Ended Here -->
         </div>
       </div>
     </div>
   </section>
 </div>
-<!-- Followers Div Ended Here -->
 <!-- JAVASCRIPT -->
 <script type="text/javascript">
   function ShowFolloweesDiv() {
