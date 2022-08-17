@@ -16,12 +16,36 @@
         </div>
         <p class="badge bg-danger"> <%= @blog.category.category %> </p>
         <br>
-        <p>
-          <%= @blog.updated_at.strftime("%A, %B %e, %Y") %> by 
-          <%= @blog.user.username %> <br>
-          <%= pluralize(@blog.views, "View") %> <br>
-          <strong> <%= @blog.subtitle %> </strong>
-        </p>
+        <div class="d-flex justify-content-between">
+          <p>
+            <%= @blog.updated_at.strftime("%A, %B %e, %Y") %> by 
+            <%= @blog.user.username %> <br>
+            <%= pluralize(@blog.views, "View") %> || <%= pluralize(@blog.likes.count, "Like") %> <br>
+            <strong> <%= @blog.subtitle %> </strong>
+          </p>
+          <div class="like-div mb-4">
+            <% like = current_user.likes.find_by(blog: @blog) %>
+            <% if like.nil? %>
+              <!-- Like Implementation using button_to RAILS -->
+              <%#= button_to "Like-2", likes_path, method: :post, params: { like: { blog_id: @blog.id }} %>
+              <!-- Like Implementation using HTML FORM -->
+              <form action="/likes" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+                <input type="hidden" name="like[blog_id]" value="<%= @blog.id %>">
+                <input type="submit" value="Like" class="btn btn-danger rounded px-3">
+              </form>
+            <% else %>
+              <!-- Unlike Implementation using button_to RAILS -->
+              <%#= button_to "Unike-2", like_path(like), method: :delete %>
+              <!-- Unlike Implementation using HTML FORM -->
+              <form action="<%= like_path(like) %>" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Unlike" class="btn btn-warning shadow rounded px-3">
+              </form>
+            <% end %>
+          </div>
+        </div>
         <hr>
         <% if @blog.photo.attached? %>
           <%= image_tag @blog.photo, alt:"Image Not Loaded", class:"img-fluid" %>

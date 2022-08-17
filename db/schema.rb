@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_12_072815) do
+ActiveRecord::Schema.define(version: 2022_08_17_161448) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -108,6 +108,16 @@ ActiveRecord::Schema.define(version: 2022_08_12_072815) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "blog_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["blog_id"], name: "index_likes_on_blog_id"
+    t.index ["user_id", "blog_id"], name: "index_likes_on_user_id_and_blog_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followee_id"
@@ -142,4 +152,6 @@ ActiveRecord::Schema.define(version: 2022_08_12_072815) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "blogs", "users"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "blogs"
+  add_foreign_key "likes", "users"
 end

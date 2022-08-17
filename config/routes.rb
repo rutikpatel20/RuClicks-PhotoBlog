@@ -30,4 +30,6 @@ Rails.application.routes.draw do
   post "profile/follow", to: "profile#follow"
   delete "profile/unfollow", to: "profile#unfollow"
   get "/profile", to: "profile#index"
+
+  resources :likes, only: [:create, :destroy]
 end
