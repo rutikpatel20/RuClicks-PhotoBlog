@@ -39,6 +39,9 @@ class User < ApplicationRecord
   # Accesses the user through the relationship object.
   has_many :followers, through: :following_users, dependent: :destroy
 
+  # Like Feature
+  has_many :likes
+
   private
 
   def self.find_for_database_authentication(warden_condition)

@@ -20,4 +20,7 @@ class Blog < ApplicationRecord
 
   # Action Text for Blog Body
   has_rich_text :blog_body
+
+  # Like Feature
+  has_many :likes
 end
