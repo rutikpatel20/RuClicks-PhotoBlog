@@ -3,8 +3,8 @@
     <%= render 'comments/comments', comment: comment, local: Comment.new %>
     <% unless comment.reply %>
       <div class="row">
-        <div class="col-4"></div>
-        <div class="col-8">
+        <div class="col-3"></div>
+        <div class="col-9">
           <div class="comment-form-nested">
             <%= render 'comments/form', commentable: comment, local: Comment.new %>
           </div>
