@@ -93,4 +93,36 @@
       <% end %>
     </div>
   </div>
+  <!-- From Author Div Start Here -->
+  <div class="blogs-from-author mt-5">
+    <h3 class="bg-danger text-light p-2"> Blogs From This Author </h3>
+    <div class="row">
+      <% Blog.where(user_id: @blog.user.id).last(4).each do |blogs_from_author| %>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <a href="/blogs/<%=blogs_from_author.id%>">
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4 text-center">
+                  <%= image_tag blogs_from_author.thumbnail, alt:"Image Not Loaded", class:"img-fluid rounded-start" %>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= blogs_from_author.title %></h5>
+                    <p class="card-text"><%= blogs_from_author.blog_body.to_plain_text.truncate_words(20) %></p>
+                    <small class="card-text text-muted">
+                      <p>
+                        <%= blogs_from_author.updated_at.strftime("%A, %B %e, %Y") %> by 
+                        <%= blogs_from_author.user.username %> <br>
+                        <%= pluralize(blogs_from_author.views, "View") %> || <%= pluralize(blogs_from_author.likes.count, "Like") %> <br>
+                      </p>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

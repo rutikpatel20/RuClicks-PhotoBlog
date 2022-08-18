@@ -66,16 +66,16 @@ body {
 }
 
 /* Recent Posts CSS */
-.recent-blogs .row a{
+.recent-blogs .row a, .blogs-from-author a{
   color: #000;
   text-decoration: none;
 }
 
-.recent-blogs .row a:hover{
+.recent-blogs .row a:hover, .blogs-from-author a:hover{
   color: #dc3545 !important;
 }
 
-.recent-blogs img{
+.recent-blogs img, .blogs-from-author img{
   width: 211px;
   height: 216px;
 }
