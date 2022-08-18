@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get "/confirmation_pending" => "static_pages#after_registration_path"
 
   # Follower System
-  get "/profiles/:id", to: "profiles#show"
+  get "/profiles/:id", to: "profiles#show", as: "profile"
   
   post "profiles/follow", to: "profiles#follow"
   delete "profiles/unfollow", to: "profiles#unfollow"
