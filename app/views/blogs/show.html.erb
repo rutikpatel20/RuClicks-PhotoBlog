@@ -19,7 +19,7 @@
         <div class="d-flex justify-content-between">
           <p>
             <%= @blog.updated_at.strftime("%A, %B %e, %Y") %> by 
-            <%= @blog.user.username %> <br>
+            <%= link_to "#{@blog.user.username}", profile_path(@blog.user.id), class:"fw-bold p-1 text-danger blog-creator" %> <br>
             <%= pluralize(@blog.views, "View") %> || <%= pluralize(@blog.likes.count, "Like") %> <br>
             <strong> <%= @blog.subtitle %> </strong>
           </p>

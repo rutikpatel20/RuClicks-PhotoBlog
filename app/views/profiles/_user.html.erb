@@ -10,12 +10,12 @@
     <button class="btn text-muted mb-0">Following</button>
   </div>
   <div>
-    <%= render 'profile/follower_count', user: user %>
+    <%= render 'profiles/follower_count', user: user %>
   </div>
 </div>
 <%#  %>
 <% if user == current_user %>
   <%= link_to "Edit Profile", edit_user_registration_path, class:"btn btn-danger" %>
 <% elsif current_user %>
-  <%= render 'profile/follow_button', user: @user %>
+  <%= render 'profiles/follow_button', user: @user %>
 <% end %>
