@@ -1,4 +1,4 @@
-module ProfileHelper
+module ProfilesHelper
   include ActionView::RecordIdentifier
 
   def following?(user)
