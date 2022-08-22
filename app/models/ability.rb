@@ -4,7 +4,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, Blog, public: true
+    can :read, Blog
 
     return unless user.present?
     can :update, Blog do |blog|
