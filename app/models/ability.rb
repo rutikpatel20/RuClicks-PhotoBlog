@@ -12,7 +12,8 @@ class Ability
     end
     can :destroy, Blog, user_id: user.id
 
-    
+    can :create, Comment
+    can :create, Like
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
   end

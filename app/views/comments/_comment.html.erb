@@ -5,9 +5,11 @@
       <div class="row">
         <div class="col-3"></div>
         <div class="col-9">
-          <div class="comment-form-nested">
-            <%= render 'comments/form', commentable: comment, local: Comment.new %>
-          </div>
+          <% if can? :create, Comment %>
+            <div class="comment-form-nested">
+              <%= render 'comments/form', commentable: comment, local: Comment.new %>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>
