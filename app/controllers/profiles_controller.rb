@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_user, only: [:show, :follow, :unfollow]
+  before_action :authenticate_user!
 
   def index
   end
