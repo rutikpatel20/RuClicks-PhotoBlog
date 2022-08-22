@@ -4,8 +4,8 @@
 <div>
   <% word = "Follower" %>
   <% if user.followers.count > 1 %>
-    <button class="btn text-muted mb-0"> <%= word.pluralize %> </button>
+    <button class="btn text-muted mb-0", id="click", onclick= "ShowFollowersDiv()"> <%= word.pluralize %> </button>
   <% else %>
-    <button class="btn text-muted mb-0"> <%= word %> </button>
+    <button class="btn text-muted mb-0", id="click", onclick= "ShowFollowersDiv()"> <%= word %> </button>
   <% end %>
 </div>
