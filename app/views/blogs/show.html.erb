@@ -10,8 +10,12 @@
         <div class="d-flex justify-content-between">
           <h2><%= @blog.title %></h2>
           <div class="d-flex">
-            <%= button_to "Edit" , edit_blog_path, method: :get ,class:"btn btn-outline-success shadow px-5 py-2" %>
-            <%= button_to "Delete", blog_path(@blog), method: :delete ,class:"btn btn-outline-danger shadow px-5 py-2 ms-2" %>
+            <% if can? :update, @blog %>
+              <%= button_to "Edit" , edit_blog_path, method: :get ,class:"btn btn-outline-success shadow px-5 py-2" %>
+            <% end %>
+            <% if can? :destroy, @blog %>
+              <%= button_to "Delete", blog_path(@blog), method: :delete ,class:"btn btn-outline-danger shadow px-5 py-2 ms-2" %>
+            <% end %>
           </div>
         </div>
         <p class="badge bg-danger"> <%= @blog.category.category %> </p>
@@ -23,28 +27,30 @@
             <%= pluralize(@blog.views, "View") %> || <%= pluralize(@blog.likes.count, "Like") %> <br>
             <strong> <%= @blog.subtitle %> </strong>
           </p>
-          <div class="like-div mb-4">
-            <% like = current_user.likes.find_by(blog: @blog) %>
-            <% if like.nil? %>
-              <!-- Like Implementation using button_to RAILS -->
-              <%#= button_to "Like-2", likes_path, method: :post, params: { like: { blog_id: @blog.id }} %>
-              <!-- Like Implementation using HTML FORM -->
-              <form action="/likes" method="post">
-                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
-                <input type="hidden" name="like[blog_id]" value="<%= @blog.id %>">
-                <input type="submit" value="Like" class="btn btn-danger rounded px-3">
-              </form>
-            <% else %>
-              <!-- Unlike Implementation using button_to RAILS -->
-              <%#= button_to "Unike-2", like_path(like), method: :delete %>
-              <!-- Unlike Implementation using HTML FORM -->
-              <form action="<%= like_path(like) %>" method="post">
-                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="submit" value="Unlike" class="btn btn-warning shadow rounded px-3">
-              </form>
-            <% end %>
-          </div>
+          <% if can? :create, Like %>
+            <div class="like-div mb-4">
+              <% like = current_user.likes.find_by(blog: @blog) %>
+              <% if like.nil? %>
+                <!-- Like Implementation using button_to RAILS -->
+                <%#= button_to "Like-2", likes_path, method: :post, params: { like: { blog_id: @blog.id }} %>
+                <!-- Like Implementation using HTML FORM -->
+                <form action="/likes" method="post">
+                  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+                  <input type="hidden" name="like[blog_id]" value="<%= @blog.id %>">
+                  <input type="submit" value="Like" class="btn btn-danger rounded px-3">
+                </form>
+              <% else %>
+                <!-- Unlike Implementation using button_to RAILS -->
+                <%#= button_to "Unike-2", like_path(like), method: :delete %>
+                <!-- Unlike Implementation using HTML FORM -->
+                <form action="<%= like_path(like) %>" method="post">
+                  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <input type="submit" value="Unlike" class="btn btn-warning shadow rounded px-3">
+                </form>
+              <% end %>
+            </div>
+          <% end %>
         </div>
         <hr>
         <% if @blog.photo.attached? %>
@@ -55,7 +61,9 @@
     </div>
   </div>
   <!-- Comment Section Start Here -->
-  <%= render 'comments/form', commentable: @blog, local: Comment.new %>
+  <% if can? :create, Comment %>
+    <%= render 'comments/form', commentable: @blog, local: Comment.new %>
+  <% end %>
   <div id="comment-pane">
     <% @comments.each do |comment| %>
       <%= render comment %>

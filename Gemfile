@@ -78,9 +78,12 @@ gem "activeadmin"
 gem "arctic_admin"
 
 # Search Feature
-gem 'ransack'
+gem "ransack"
 
 # Breadcrumbs Navigation
 gem "breadcrumbs_on_rails"
 
 gem "pry"
+
+# Authorization Gem
+gem "cancancan"
