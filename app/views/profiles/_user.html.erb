@@ -7,7 +7,7 @@
   </div>
   <div>
     <h5 class="mb-2"><%= user.followees.count %></h5>
-    <button class="btn text-muted mb-0">Following</button>
+    <button class="btn text-muted mb-0", id="click", onclick= "ShowFolloweesDiv()">Following</button>
   </div>
   <div>
     <%= render 'profiles/follower_count', user: user %>
