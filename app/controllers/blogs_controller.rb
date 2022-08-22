@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   add_breadcrumb "RuClicks", :root_path
